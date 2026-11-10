@@ -2,6 +2,20 @@
 const client = require("prom-client");
 
 const app = express();
+// HTTP Request Logging Middleware
+app.use((req, res, next) => {
+    const startTime = Date.now();
+
+    res.on('finish', () => {
+        const duration = Date.now() - startTime;
+
+        console.log(
+            `${req.method} ${req.originalUrl} ${res.statusCode} ${duration}ms`
+        );
+    });
+
+    next();
+});
 const PORT = process.env.PORT || 3000;
 
 // Collect default Node.js metrics

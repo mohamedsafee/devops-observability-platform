@@ -1,0 +1,8 @@
+﻿services:
+  app:
+    build: .
+    image: devops-observability-app:v1
+    container_name: observability-app
+    ports:
+      - "3000:3000"
+    restart: unless-stopped

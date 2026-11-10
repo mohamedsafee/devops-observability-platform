@@ -6,7 +6,7 @@ COPY package*.json ./
 
 RUN npm ci --omit=dev
 
-COPY app.js .
+COPY app.js tracing.js ./
 
 EXPOSE 3000
 
